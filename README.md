@@ -49,8 +49,11 @@
 ## 音视频开发学习任务列表
 
 - [X] 1.在 Android 平台绘制一张图片，使用至少 3 种不同的 API，ImageView，SurfaceView，自定义 View
+
         a. ImageView 直接展示
+        
         b. SurfaceView 获取Holder，在callback surfaceCreated中调用lockCanvas获取Canavas对象绘制，绘制完成调用unlockCanvasAndPost
+        
         c. 自定义View继承View，重写onDraw方法 调用canvas.drawBitmap绘制。
 
 - [X] 2. 在 Android 平台使用 AudioRecord 和 AudioTrack API 完成音频 PCM 数据的采集和播放，并实现读写音频 wav 文件
