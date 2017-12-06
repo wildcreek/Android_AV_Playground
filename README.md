@@ -18,18 +18,24 @@
 4. 视频编解码：x264，OpenH264，ffmpeg 等
 
 ### 音频
+* 延时标准: ITU-TG.114规定，对于高质量语音可接受的时延是300ms。一般来说，如果时延在300～400ms，通话的交互性比较差，但还可以接受。时延大于400ms时，则交互通信非常困难。
+* 常见的音频编码方式：PCM , ADPCM 等
+* 常见的音频压缩格式: MP3，AAC，OGG，WMA，Opus，FLAC，APE，m4a，AMR 等
 1. 采集
 ~~~
-采集接口：AudioRecord
-采集参数：采样率，通道号，位宽 等
+采集接口：AudioRecord , MediaRecoder
+采集参数：采样率，通道号，量化精度(位宽) 等
 采集格式：PCM 
+
 ~~~
 
-2. 播放接口：AudioTrack 等
+2. 播放接口：SoundPool，MediaPlayer，AudioTrack  等
 
-3. 音频处理（重采样、降噪、回声消除、混音）：speexdsp，ffmpeg 等
+3. 音频处理（重采样、降噪、回声消除、混音）：speexdsp，ffmpeg ,webrtc audio module（NS、VAD、AECM、AGC）等
 
-4. 音频编解码：libfaac，opus，speex，ffmpeg 等
+4. 音频编解码：MediaCodec,libfaac，opus，speex，ffmpeg 等
+
+5. NDK API：OpenSL ES
 
 ### 传输
 1. 音视频在传输前，怎么打包的，如：FLV，ts，mpeg4 等
@@ -42,9 +48,16 @@
 
 ## 音视频开发学习任务列表
 
-- [ ] 1.在 Android 平台绘制一张图片，使用至少 3 种不同的 API，ImageView，SurfaceView，自定义 View
+- [X] 1.在 Android 平台绘制一张图片，使用至少 3 种不同的 API，ImageView，SurfaceView，自定义 View
+        a. ImageView 直接展示
+        b. SurfaceView 获取Holder，在callback surfaceCreated中调用lockCanvas获取Canavas对象绘制，绘制完成调用unlockCanvasAndPost
+        c. 自定义View继承View，重写onDraw方法 调用canvas.drawBitmap绘制。
 
 - [ ] 2. 在 Android 平台使用 AudioRecord 和 AudioTrack API 完成音频 PCM 数据的采集和播放，并实现读写音频 wav 文件
+        a. AudioRecord 通过采样率、通道、位宽和上述参数计算的合适buffer构造，启动后，调用write将硬件采集数据读入该buffer，通过流将该buffer循环写入文件。
+        b. AudioTrack 通过采样率、通道、位宽、buffer、播放模式、采集类型等构造，播放后，通过文件流循环读取buffer，并写入Audio Sink。
+        c. WAV 是RIFF文件的子集，WAV文件包含一个wave chunk 和fmt 、data 子chunk，上述 pcm无损压缩编码数据 可作为data数据。
+        AudioRecord 写入 wav 文件可以先构造 wav文件，写入文件头，再获取buffer写入 data，结束采集时修改data size ;AudioTrack 读取wav文件可以直接读取data数据到buffer，再调用write。
 
 - [ ] 3. 在 Android 平台使用 Camera API 进行视频的采集，分别使用 SurfaceView、TextureView 来预览 Camera 数据，取到 NV21 的数据回调
 
