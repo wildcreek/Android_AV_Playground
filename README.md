@@ -53,9 +53,12 @@
         b. SurfaceView 获取Holder，在callback surfaceCreated中调用lockCanvas获取Canavas对象绘制，绘制完成调用unlockCanvasAndPost
         c. 自定义View继承View，重写onDraw方法 调用canvas.drawBitmap绘制。
 
-- [ ] 2. 在 Android 平台使用 AudioRecord 和 AudioTrack API 完成音频 PCM 数据的采集和播放，并实现读写音频 wav 文件
+- [X] 2. 在 Android 平台使用 AudioRecord 和 AudioTrack API 完成音频 PCM 数据的采集和播放，并实现读写音频 wav 文件
+        
         a. AudioRecord 通过采样率、通道、位宽和上述参数计算的合适buffer构造，启动后，调用write将硬件采集数据读入该buffer，通过流将该buffer循环写入文件。
+        
         b. AudioTrack 通过采样率、通道、位宽、buffer、播放模式、采集类型等构造，播放后，通过文件流循环读取buffer，并写入Audio Sink。
+        
         c. WAV 是RIFF文件的子集，WAV文件包含一个wave chunk 和fmt 、data 子chunk，上述 pcm无损压缩编码数据 可作为data数据。
         AudioRecord 写入 wav 文件可以先构造 wav文件，写入文件头，再获取buffer写入 data，结束采集时修改data size ;AudioTrack 读取wav文件可以直接读取data数据到buffer，再调用write。
 
