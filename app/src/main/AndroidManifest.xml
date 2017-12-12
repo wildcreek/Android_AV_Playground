@@ -8,7 +8,7 @@
     <!-- 多媒体权限 -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />0
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission." />
     <!-- 自定义权限 -->
@@ -39,7 +39,10 @@
         <activity android:name=".audio.AudioRecordActivity" />
         <!--android:configChanges="orientation|screenSize"-->
         <!--android:screenOrientation="fullSensor"-->
-        <activity android:name=".video.CaptureCameraActivity"
+        <activity android:name=".video.CaptureCamera1Activity"
+            ></activity>
+        <activity android:name=".video.CaptureCamera2Activity"
+            android:hardwareAccelerated="true"
             ></activity>
     </application>
 

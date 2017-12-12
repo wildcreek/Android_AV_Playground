@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.wildcreek.playground.video.CaptureCameraActivity;
+import com.wildcreek.playground.video.CaptureCamera2Activity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent intent = new Intent(this , CaptureCameraActivity.class);
+        Intent intent = new Intent(this , CaptureCamera2Activity.class);
         startActivity(intent);
     }
 }
