@@ -35,13 +35,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".image.DrawImageActivity" />
-        <activity android:name=".audio.AudioRecordActivity" />
+        <activity android:name=".task1.DrawImageActivity" />
+        <activity android:name=".task2.AudioRecordActivity" />
         <!--android:configChanges="orientation|screenSize"-->
         <!--android:screenOrientation="fullSensor"-->
-        <activity android:name=".video.CaptureCamera1Activity"
+        <activity android:name=".task3.CaptureCamera1Activity"
             ></activity>
-        <activity android:name=".video.CaptureCamera2Activity"
+        <activity android:name=".task3.CaptureCamera2Activity"
             android:hardwareAccelerated="true"
             ></activity>
     </application>

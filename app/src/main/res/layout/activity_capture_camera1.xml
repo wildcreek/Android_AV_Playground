@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.wildcreek.playground.video.CaptureCamera1Activity">
+    tools:context="com.wildcreek.playground.task3.CaptureCamera1Activity">
     <SurfaceView
         android:id="@+id/sv_act_capture_camera"
         android:layout_width="match_parent"

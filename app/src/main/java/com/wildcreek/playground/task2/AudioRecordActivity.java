@@ -1,4 +1,4 @@
-package com.wildcreek.playground.audio;
+package com.wildcreek.playground.task2;
 
 import android.media.AudioFormat;
 import android.media.AudioManager;

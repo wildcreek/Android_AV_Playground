@@ -1,4 +1,4 @@
-package com.wildcreek.playground.image;
+package com.wildcreek.playground.task1;
 
 import android.content.Context;
 import android.graphics.Bitmap;

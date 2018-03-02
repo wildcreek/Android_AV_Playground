@@ -11,7 +11,7 @@
  *  @author  Jhuster
  *  @date    2016/03/19
  */
-package com.wildcreek.playground.audio.wav;
+package com.wildcreek.playground.task2.wav;
 
 public class WavFileHeader {
 

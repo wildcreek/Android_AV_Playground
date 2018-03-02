@@ -1,4 +1,4 @@
-package com.wildcreek.playground.video;
+package com.wildcreek.playground.task3;
 
 import android.app.Activity;
 import android.graphics.ImageFormat;
