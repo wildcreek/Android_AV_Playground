@@ -7,24 +7,24 @@
         android:id="@+id/tv_extract_audio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MP4提取视频"
+        android:text="MP4提取音频"
+        android:textSize="30dp"
         android:textColor="@color/colorPrimaryDark"
-        android:layout_weight="1"
         />
     <TextView
         android:id="@+id/tv_extract_video"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MP4提取音频"
+        android:text="MP4提取视频"
+        android:textSize="30dp"
         android:textColor="@color/colorPrimaryDark"
-        android:layout_weight="1"
         />
     <TextView
         android:id="@+id/tv_muxer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="音频和视频数据合成MP4"
+        android:textSize="30dp"
         android:textColor="@color/colorPrimaryDark"
-        android:layout_weight="1"
         />
 </LinearLayout>

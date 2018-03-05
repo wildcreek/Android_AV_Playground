@@ -21,7 +21,10 @@ public class MediaExtractorMuxerActivity extends AppCompatActivity {
     private TextView tv_extract_audio;
     private TextView tv_extract_video;
     private TextView tv_muxer;
-
+    private static final String INPUT_MEDIA_FILE = Environment.getExternalStorageDirectory() + "/test.mp4";
+    private static final String EXTRACT_AUDIO_FILE = Environment.getExternalStorageDirectory() + "/extract_audio.mp4";
+    private static final String EXTRACT_VIDEO_FILE = Environment.getExternalStorageDirectory() + "/extract_video.mp4";
+    private static final String MUX_MEDIA_FILE = Environment.getExternalStorageDirectory() + "/mux_media.mp4";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,7 @@ public class MediaExtractorMuxerActivity extends AppCompatActivity {
                 extractVideoFile();
             }
         });
+
         tv_muxer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,7 +60,7 @@ public class MediaExtractorMuxerActivity extends AppCompatActivity {
         MediaExtractor mediaExtractor = new MediaExtractor();
         int videoIndex = -1;
         try {
-            mediaExtractor.setDataSource(Environment.getExternalStorageDirectory() + "/input.mp4");
+            mediaExtractor.setDataSource(INPUT_MEDIA_FILE);
             int trackCount = mediaExtractor.getTrackCount();
             for (int i = 0; i < trackCount; i++) {
                 MediaFormat trackFormat = mediaExtractor.getTrackFormat(i);
@@ -69,7 +73,7 @@ public class MediaExtractorMuxerActivity extends AppCompatActivity {
             //切换道视频信号的信道
             mediaExtractor.selectTrack(videoIndex);
             MediaFormat trackFormat = mediaExtractor.getTrackFormat(videoIndex);
-            MediaMuxer mediaMuxer = new MediaMuxer(Environment.getExternalStorageDirectory() + "/output_video.mp4", MediaMuxer.OutputFormat.MUXER_OUTPUT_MPEG_4);
+            MediaMuxer mediaMuxer = new MediaMuxer(EXTRACT_VIDEO_FILE, MediaMuxer.OutputFormat.MUXER_OUTPUT_MPEG_4);
             //追踪此信道
             int trackIndex = mediaMuxer.addTrack(trackFormat);
             ByteBuffer byteBuffer = ByteBuffer.allocate(1024 * 500);
@@ -112,7 +116,7 @@ public class MediaExtractorMuxerActivity extends AppCompatActivity {
             mediaExtractor.release();
             mediaMuxer.release();
 
-            Log.e("MediaExtractorMuxer", "finish");
+            Log.e("MediaExtractorMuxer", "extractVideoFile finish");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -122,7 +126,7 @@ public class MediaExtractorMuxerActivity extends AppCompatActivity {
         MediaExtractor mediaExtractor = new MediaExtractor();
         int audioIndex = -1;
         try {
-            mediaExtractor.setDataSource(Environment.getExternalStorageDirectory() + "/input.mp4");
+            mediaExtractor.setDataSource(INPUT_MEDIA_FILE);
             int trackCount = mediaExtractor.getTrackCount();
             for (int i = 0; i < trackCount; i++) {
                 MediaFormat trackFormat = mediaExtractor.getTrackFormat(i);
@@ -132,7 +136,7 @@ public class MediaExtractorMuxerActivity extends AppCompatActivity {
             }
             mediaExtractor.selectTrack(audioIndex);
             MediaFormat trackFormat = mediaExtractor.getTrackFormat(audioIndex);
-            MediaMuxer mediaMuxer = new MediaMuxer(Environment.getExternalStorageDirectory() + "/output_audios", MediaMuxer.OutputFormat.MUXER_OUTPUT_MPEG_4);
+            MediaMuxer mediaMuxer = new MediaMuxer(EXTRACT_AUDIO_FILE, MediaMuxer.OutputFormat.MUXER_OUTPUT_MPEG_4);
             int writeAudioIndex = mediaMuxer.addTrack(trackFormat);
             mediaMuxer.start();
             ByteBuffer byteBuffer = ByteBuffer.allocate(500 * 1024);
@@ -173,7 +177,7 @@ public class MediaExtractorMuxerActivity extends AppCompatActivity {
             mediaMuxer.stop();
             mediaMuxer.release();
             mediaExtractor.release();
-            Log.e("MediaExtractorMuxer", "finish");
+            Log.e("MediaExtractorMuxer", "extractAudioFile finish");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -182,7 +186,7 @@ public class MediaExtractorMuxerActivity extends AppCompatActivity {
     private void muxAudioAndVideo() {
         try {
             MediaExtractor videoExtractor = new MediaExtractor();
-            videoExtractor.setDataSource(Environment.getExternalStorageDirectory() + "/output_video");
+            videoExtractor.setDataSource(EXTRACT_VIDEO_FILE);
             MediaFormat videoFormat = null;
             int videoTrackIndex = -1;
             int videoTrackCount = videoExtractor.getTrackCount();
@@ -196,7 +200,7 @@ public class MediaExtractorMuxerActivity extends AppCompatActivity {
             }
 
             MediaExtractor audioExtractor = new MediaExtractor();
-            audioExtractor.setDataSource(Environment.getExternalStorageDirectory() + "/output_audio");
+            audioExtractor.setDataSource(EXTRACT_AUDIO_FILE);
             MediaFormat audioFormat = null;
             int audioTrackIndex = -1;
             int audioTrackCount = audioExtractor.getTrackCount();
@@ -215,7 +219,7 @@ public class MediaExtractorMuxerActivity extends AppCompatActivity {
             MediaCodec.BufferInfo videoBufferInfo = new MediaCodec.BufferInfo();
             MediaCodec.BufferInfo audioBufferInfo = new MediaCodec.BufferInfo();
 
-            MediaMuxer mediaMuxer = new MediaMuxer(Environment.getExternalStorageDirectory() + "/output", MediaMuxer.OutputFormat.MUXER_OUTPUT_MPEG_4);
+            MediaMuxer mediaMuxer = new MediaMuxer(MUX_MEDIA_FILE, MediaMuxer.OutputFormat.MUXER_OUTPUT_MPEG_4);
             int writeVideoTrackIndex = mediaMuxer.addTrack(videoFormat);
             int writeAudioTrackIndex = mediaMuxer.addTrack(audioFormat);
             mediaMuxer.start();
@@ -267,8 +271,10 @@ public class MediaExtractorMuxerActivity extends AppCompatActivity {
             mediaMuxer.release();
             videoExtractor.release();
             audioExtractor.release();
+            Log.e("MediaExtractorMuxer", "muxAudioAndVideo finish");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 }
