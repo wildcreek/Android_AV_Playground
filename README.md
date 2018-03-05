@@ -66,7 +66,11 @@
         AudioRecord 写入 wav 文件可以先构造 wav文件，写入文件头，再获取buffer写入 data，结束采集时修改data size ;AudioTrack 读取wav文件可以直接读取data数据到buffer，再调用write。
 
 - [ ] 3. 在 Android 平台使用 Camera API 进行视频的采集，分别使用 SurfaceView、TextureView 来预览 Camera 数据，取到 NV21 的数据回调
-
+        a. Camera的启动和 Camera.Parameters 配置
+        b. Camera的方向和预览方向设定
+        c. 预览的载体，Surface 和 SurfaceTexture
+        d. 预览回调onPreviewFrame设置
+        e. 启动预览
 - [ ] 4. 学习 Android 平台的 MediaExtractor 和 MediaMuxer API，知道如何解析和封装 mp4 文件
 
 - [ ] 5. 学习 Android 平台 OpenGL ES API，了解 OpenGL 开发的基本流程，使用 OpenGL 绘制一个三角形
