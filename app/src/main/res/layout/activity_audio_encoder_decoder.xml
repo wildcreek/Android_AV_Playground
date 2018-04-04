@@ -9,7 +9,6 @@
         android:layout_height="wrap_content"
         android:text="encode"
         android:textColor="@color/colorPrimaryDark"
-        android:layout_weight="1"
         />
 
 

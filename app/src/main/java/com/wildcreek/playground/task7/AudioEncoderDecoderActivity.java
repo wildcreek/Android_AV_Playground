@@ -22,9 +22,9 @@ public class AudioEncoderDecoderActivity extends AppCompatActivity implements Ou
     private Button encode_btn;
 
     private FileInputStream inputStream = null;
-    private String pcmFilePath = "/mnt/sdcard/vocal.pcm";
+    private String pcmFilePath = "/mnt/sdcard/audio/test.pcm";
     private FileOutputStream outputStream = null;
-    private String aacFilePath = "/mnt/sdcard/vocal_mediacodec.aac";
+    private String aacFilePath = "/mnt/sdcard/test_hw_coded.aac";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

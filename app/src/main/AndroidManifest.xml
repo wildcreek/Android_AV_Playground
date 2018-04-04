@@ -44,6 +44,7 @@
             android:hardwareAccelerated="true"
             />
         <activity android:name=".task4.MediaExtractorMuxerActivity"/>
+        <activity android:name=".task7.AudioEncoderDecoderActivity"/>
     </application>
 
 </manifest>

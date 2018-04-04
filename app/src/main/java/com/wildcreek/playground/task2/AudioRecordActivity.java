@@ -60,7 +60,7 @@ public class AudioRecordActivity extends AppCompatActivity implements View.OnCli
         //PCM:Pulse Code Modulation
         int sampleRateInHz = 44100;
         int channelConfig = AudioFormat.CHANNEL_IN_STEREO;
-        int audioFormat = AudioFormat.ENCODING_PCM_8BIT;
+        int audioFormat = AudioFormat.ENCODING_PCM_16BIT;
         int bufferSize = AudioTrack.getMinBufferSize(sampleRateInHz, channelConfig, audioFormat);
         Log.i("AudioRecordActivity", "bufferSize " + bufferSize);
         audioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC, sampleRateInHz, channelConfig

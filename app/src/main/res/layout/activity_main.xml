@@ -4,12 +4,38 @@
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android" >
     <TextView
+        android:id="@+id/tv_task1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Task1: Draw image with Android API"
         android:textColor="@color/colorPrimaryDark"
-        android:layout_weight="1"
         />
-
-
+    <TextView
+        android:id="@+id/tv_task2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Task2: pcm record and play with AudioRecord/AudioTrack "
+        android:textColor="@color/colorPrimaryDark"
+        />
+    <TextView
+        android:id="@+id/tv_task3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Task3: Camera preview with SurfaceView and TextureView"
+        android:textColor="@color/colorPrimaryDark"
+        />
+    <TextView
+        android:id="@+id/tv_task4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Task4: Operate mp4 file with MediaExtractor and MediaMuxer"
+        android:textColor="@color/colorPrimaryDark"
+        />
+    <TextView
+        android:id="@+id/tv_task7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Task7: Using MediaCodec to encode and decode AAC files"
+        android:textColor="@color/colorPrimaryDark"
+        />
 </LinearLayout>
